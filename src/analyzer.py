@@ -22,6 +22,16 @@ class Analyzer():
         self.df["Last Check-In Date"] = pd.to_datetime(self.df["Last Check-In Date"], format="%d/%m/%Y")
 
         # Logs for missing columns
+        size = len(self.df.index)
+        
+        for i in range(size):
+            missing_data = self.df.loc[i].isna()
+            print(missing_data)
+            if sum(missing_data) != 0:
+                print("WARNING: Missing columns " + 
+                ", ".join(self.df.columns[missing_data]) + 
+                " at row {}".format(i))
+
     
 
     def get_earliest_customer(self):
