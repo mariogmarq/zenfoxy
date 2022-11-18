@@ -27,9 +27,7 @@ def test_list_companies():
         assert list[i-1] < list[i]
 
 def test_exception_missing_columns():
-    analyzer = Analyzer()
     df = pd.DataFrame({"Street":[], "Zip":[], "City":[], "Last Check-In Date":[]})
-    analyzer.df = df
 
     with pytest.raises(Exception):
-        analyzer.preprocess_data()
+        Analyzer(df)
