@@ -26,7 +26,6 @@ class Analyzer():
         
         for i in range(size):
             missing_data = self.df.loc[i].isna()
-            print(missing_data)
             if sum(missing_data) != 0:
                 print("WARNING: Missing columns " + 
                 ", ".join(self.df.columns[missing_data]) + 
