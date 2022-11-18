@@ -33,3 +33,11 @@ class Analyzer():
         
         full_names = (self.df["First Name"] + " " + self.df["Last Name"]).sort_values().dropna().values
         return full_names
+
+    def get_companies_list(self):
+        if self.df is None:
+            return
+        
+        companies = self.df["Company"].dropna().unique()
+        companies.sort()
+        return companies
