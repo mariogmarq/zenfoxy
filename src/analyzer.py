@@ -10,9 +10,6 @@ class Analyzer():
         self.preprocess_data()
 
     def preprocess_data(self):
-        if self.df is None:
-            return
-
         # Check that we have the necesary data
         required_columns = ["Street", "Zip",
                             "City", "Company", "Last Check-In Date"]
@@ -34,31 +31,19 @@ class Analyzer():
                       " at row {}".format(i))
 
     def get_earliest_customer(self):
-        if self.df is None:
-            return
-
         sorted = self.df.sort_values(by="Last Check-In Date", ascending=True)
         return sorted.head(n=1)
 
     def get_latest_customer(self):
-        if self.df is None:
-            return
-
         sorted = self.df.sort_values(by="Last Check-In Date", ascending=False)
         return sorted.head(n=1)
 
     def get_customer_list(self):
-        if self.df is None:
-            return
-
         full_names = (self.df["First Name"] + " " +
                       self.df["Last Name"]).sort_values().dropna().values
         return full_names
 
     def get_companies_list(self):
-        if self.df is None:
-            return
-
         companies = self.df["Company"].dropna().unique()
         companies.sort()
         return companies
