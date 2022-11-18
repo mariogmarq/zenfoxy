@@ -17,3 +17,10 @@ def test_list_customers():
     
     for i in range(1, len(list)):
         assert list[i-1] < list[i]
+
+def test_list_companies():
+    analyzer = Analyzer("sample.csv")
+    list = analyzer.get_companies_list()
+    
+    for i in range(1, len(list)):
+        assert list[i-1] < list[i]
