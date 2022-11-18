@@ -26,3 +26,10 @@ class Analyzer():
 
         sorted = self.df.sort_values(by="Last Check-In Date", ascending=False)
         return sorted.head(n=1)
+    
+    def get_customer_list(self):
+        if self.df is None:
+            return
+        
+        full_names = (self.df["First Name"] + " " + self.df["Last Name"]).sort_values().dropna().values
+        return full_names
