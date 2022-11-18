@@ -19,3 +19,10 @@ class Analyzer():
 
         sorted = self.df.sort_values(by="Last Check-In Date", ascending=True)
         return sorted.head(n=1)
+    
+    def get_latest_customer(self):
+        if self.df is None:
+            return
+
+        sorted = self.df.sort_values(by="Last Check-In Date", ascending=False)
+        return sorted.head(n=1)
